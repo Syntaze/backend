@@ -5,6 +5,8 @@ import com.syntaze.backend.domain.model.InstagramStory;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface InstagramStoryRepository {
 
@@ -16,7 +18,10 @@ public interface InstagramStoryRepository {
 
     void deleteStoryById(UUID id);
 
+    Page<InstagramStory> findAll(Pageable pageable);
+
 }
+
 
 
 

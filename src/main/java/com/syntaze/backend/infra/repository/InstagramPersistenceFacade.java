@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 @Service
 public class InstagramPersistenceFacade implements com.syntaze.backend.domain.repository.InstagramProfileRepository,
@@ -81,6 +83,11 @@ public class InstagramPersistenceFacade implements com.syntaze.backend.domain.re
         jpaStoryRepo.deleteById(id);
     }
 
+    @Override
+    public Page<InstagramStory> findAll(Pageable pageable) {
+        return jpaStoryRepo.findAll(pageable).map(InstagramStoryEntity::toDomain);
+    }
+
     // ---- mapping helpers ----
     private InstagramProfileEntity profileToEntity(InstagramProfile p) {
         InstagramProfileEntity e = new InstagramProfileEntity();
@@ -110,6 +117,7 @@ public class InstagramPersistenceFacade implements com.syntaze.backend.domain.re
     }
 
 }
+
 
 
 
