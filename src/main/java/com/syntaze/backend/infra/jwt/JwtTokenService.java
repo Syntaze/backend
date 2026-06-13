@@ -1,7 +1,5 @@
 package com.syntaze.backend.infra.jwt;
 
-package com.syntaze.backend.infra.security;
-
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
