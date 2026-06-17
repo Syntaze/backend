@@ -51,4 +51,3 @@ public class Bot {
         this.lastSeenAt = lastSeenAt;
     }
 }
-

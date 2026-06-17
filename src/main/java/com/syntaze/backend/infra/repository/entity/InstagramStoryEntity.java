@@ -105,6 +105,9 @@ public class InstagramStoryEntity {
     public InstagramStory toDomain() {
         InstagramStory s = new InstagramStory();
         s.setId(this.id);
+        if (this.profile != null) {
+            s.setProfileId(this.profile.getId());
+        }
         s.setExternalId(this.externalId);
         s.setLikes(this.likes);
         s.setPostedAt(this.postedAt);
@@ -115,5 +118,4 @@ public class InstagramStoryEntity {
     }
 
 }
-
 

@@ -13,4 +13,3 @@ public interface InstagramStoryRepository extends JpaRepository<InstagramStoryEn
     List<InstagramStoryEntity> findByProfileId(UUID profileId);
 
 }
-

@@ -88,4 +88,3 @@ public class InstagramProfile {
         this.stories = stories;
     }
 }
-

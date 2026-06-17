@@ -13,4 +13,3 @@ public interface InstagramProfileRepository extends JpaRepository<InstagramProfi
     Optional<InstagramProfileEntity> findByUsername(String username);
 
 }
-

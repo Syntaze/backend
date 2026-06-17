@@ -20,4 +20,3 @@ public final class ApiExceptions {
         public NotFoundException(String message) { super(message); }
     }
 }
-

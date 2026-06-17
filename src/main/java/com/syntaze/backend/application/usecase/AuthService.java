@@ -36,7 +36,6 @@ public class AuthService {
     }
 
     public void requestMagicLink(String email) {
-        // generate magic token
         String token = magicLinkService.generateMagicToken(email, "magic");
         String link = appBaseUrl + "/auth/magic/confirm?token=" + token;
         emailService.sendMagicLink(email, link);
@@ -51,13 +50,11 @@ public class AuthService {
         Optional<UserEntity> maybe = userRepository.findByEmail(email);
         if (maybe.isPresent()) {
             UserEntity entity = maybe.get();
-            // return auth JWT
             User domain = toDomain(entity);
             return Optional.of(tokenService.generate(domain));
         }
 
         if ("magic".equals(type)) {
-            // user not found -> return a register token so client can continue registration
             String registerToken = magicLinkService.generateMagicToken(email, "register");
             return Optional.of(registerToken);
         }

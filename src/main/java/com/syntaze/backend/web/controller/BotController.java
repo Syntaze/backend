@@ -30,6 +30,23 @@ public class BotController {
         this.storage = storage;
     }
 
+    @PostMapping(path = "/bots/register")
+    public ResponseEntity<?> registerBot(@org.springframework.web.bind.annotation.RequestBody(required = false) java.util.Map<String, String> body) {
+        String name = "scrapper";
+        if (body != null && body.get("name") != null && !body.get("name").isBlank()) name = body.get("name");
+
+        com.syntaze.backend.domain.model.Bot bot = new com.syntaze.backend.domain.model.Bot();
+        bot.setId(java.util.UUID.randomUUID());
+        bot.setName(name);
+        String apiKey = java.util.UUID.randomUUID().toString();
+        bot.setApiKey(apiKey);
+        bot.setCreatedAt(Instant.now());
+
+        var saved = botRepository.save(bot);
+
+        return ResponseEntity.ok(java.util.Map.of("apiKey", saved.getApiKey()));
+    }
+
     @PostMapping(path = "/bots/data", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<?> receiveData(
             @RequestHeader("X-BOT-API-KEY") String apiKey,
@@ -81,4 +98,3 @@ public class BotController {
         return ResponseEntity.ok().body(saved);
     }
 }
-

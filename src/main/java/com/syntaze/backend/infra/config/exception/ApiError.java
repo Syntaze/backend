@@ -8,4 +8,3 @@ public record ApiError(Instant timestamp, int status, String error, String messa
         return new ApiError(Instant.now(), status, error, message, path);
     }
 }
-

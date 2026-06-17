@@ -16,4 +16,3 @@ public interface BotRepository {
     void deleteById(UUID id);
 
 }
-
